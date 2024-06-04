@@ -108,11 +108,27 @@
             display: block;
             margin: 20px auto;
         }
+         .deskimg {
+            display: flex;
+
+        }
+
+        .mobilimg {
+            display: none;
+        }
 
         @media only screen and (max-width: 600px) {
             .imageart {
                 max-width: 80%;
             }
+            .deskimg {
+            display: none;
+
+        }
+
+        .mobilimg {
+            display: flex;
+        }
         }
 
         @font-face {
@@ -182,7 +198,8 @@
         </div>
     </div>
     <div>
-        <img src="PRESAVEMAINPAGE.webp" class="imageart">
+        <img src="PRESAVEMAINPAGE.webp" class="imageart deskimg">
+           <img src="mobilepresave.webp" class="imageart mobilimg">
     </div>
     
 </body>
