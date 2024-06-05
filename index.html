@@ -31,24 +31,6 @@
         /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <!-- Meta Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () { n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1457942088272462');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1457942088272462&ev=PageView&noscript=1"
-        /></noscript>
-    <!-- End Meta Pixel Code -->
     <meta name="facebook-domain-verification" content="sbian6rv2vhf6so3euwqraqs3cv5k6" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -72,21 +54,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acid Waves | Vibrations</title>
     <style>
-         .form-container {
+        .form-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        
         }
 
         .form-container form {
             display: flex;
             flex-direction: column;
-           align-items: flex-end;
+            align-items: flex-end;
         }
-
-        
 
         .form-container input[type="email"] {
             padding: 10px;
@@ -97,9 +76,8 @@
             color: white;
             outline: none;
         }
-         
 
-         .form-container input[type="submit"] {
+        .form-container input[type="submit"] {
             font-size: 16px;
             color: #282828;
             background: none;
@@ -110,11 +88,9 @@
             left: 0px;
         }
 
-
-        
         .marquee {
             width: 100%;
-            height: 40px; /* Increased height by 70% from 60px */
+            height: 40px;
             overflow: hidden;
             background: #282828;
             color: white;
@@ -126,7 +102,7 @@
 
         .marquee-content {
             display: flex;
-            animation: marquee 40s linear infinite; /* Slowed down by 50% */
+            animation: marquee 40s linear infinite;
         }
 
         @keyframes marquee {
@@ -148,32 +124,32 @@
             display: block;
             margin: 20px auto;
         }
-         .deskimg {
+
+        .deskimg {
             display: flex;
             justify-content: center;
             letter-spacing: .7px;
-
         }
 
         .mobilimg {
             display: none;
-                flex-direction: column;
-    align-items: center;
-     letter-spacing: .7px;
+            flex-direction: column;
+            align-items: center;
+            letter-spacing: .7px;
         }
 
         @media only screen and (max-width: 600px) {
             .imageart {
-                max-width:100%;
+                max-width: 100%;
             }
+
             .deskimg {
-            display: none;
+                display: none;
+            }
 
-        }
-
-        .mobilimg {
-            display: flex;
-        }
+            .mobilimg {
+                display: flex;
+            }
         }
 
         @font-face {
@@ -183,7 +159,6 @@
             font-weight: normal;
             font-style: normal;
         }
-        
 
         @font-face {
             font-family: 'helvetica_vibrations';
@@ -192,8 +167,6 @@
             font-weight: normal;
             font-style: normal;
         }
-
-
 
         @font-face {
             font-family: 'helvetica_neue45_light';
@@ -212,28 +185,28 @@
             text-decoration: none;
         }
 
-        /* Link styles before being clicked */
         a:link {
-            color: black; /* Change this color to your desired default link color */
+            color: black;
         }
 
-        /* Link styles after being clicked */
         a:visited {
-            color: black; /* Change this color to your desired visited link color */
+            color: black;
         }
 
-        /* Link styles on hover */
         a:hover {
-            color: black; /* Change this color to your desired link color on hover */
+            color: black;
         }
 
-        /* Link styles when active (while being clicked) */
         a:active {
-            color: black; /* Change this color to your desired link color when clicked */
+            color: black;
         }
 
         body {
             margin: 0px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -255,40 +228,80 @@
     </div>
 
     <div class="deskimg">
-    <div style="display: flex; font-family: 'helvetica_vibrations'" >
-        <div style="display: flex;width: 25%;align-items: center;justify-content: flex-end; font-size: 33px;text-align: center; line-height: 35px; color: #282828;"><div>BE THE FIRST<br> GETTING THE <br> PRE SAVE LINK<br><div style="font-size: 17px;">ENTER YOUR EMAIL</div> <div class="form-container">
-        <form action="YOUR_FORM_ACTION_URL" method="post" style="">
-            <input style=" font-family: 'helvetica_vibrations'; letter-spacing: .7px;" type="email" name="email" placeholder="" required>
-            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
-        </form>
-    </div></div></div>
-    <div style="width: 50%;">
-        <img src="presavepage.webp" class="imageart ">
-           
+        <div style="display: flex; font-family: 'helvetica_vibrations'">
+            <div style="display: flex;width: 25%;align-items: center;justify-content: flex-end; font-size: 33px;text-align: center; line-height: 35px; color: #282828;">
+                <div id="presave-text-desktop">BE THE FIRST<br> GETTING THE <br> PRE SAVE LINK<br>
+                    <div style="font-size: 17px;">ENTER YOUR EMAIL</div>
+                    <div class="form-container" id="form-container-desktop">
+                        <form id="email-form-desktop" action="YOUR_FORM_ACTION_URL" method="post">
+                            <input style="font-family: 'helvetica_vibrations'; letter-spacing: .7px;" type="email" name="email" placeholder="" required>
+                            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
+                        </form>
+                    </div>
+                </div>
+                <div id="success-message-desktop" class="hidden">
+                    <p style="font-family: 'helvetica_vibrations';">COOL, YOU ARE NOW IN THE LIST</p>
+                </div>
+            </div>
+            <div style="width: 50%;">
+                <img src="presavepage.webp" class="imageart">
+            </div>
+            <div style="display: flex;width: 25%;align-items: flex-end;">
+                <div style="margin-bottom: 50px; font-size: 50px;color: #282828;">OUT JULY 5</div>
+            </div>
+        </div>
     </div>
-     <div style="display: flex;width: 25%;align-items: flex-end;"><div style="margin-bottom: 50px; font-size: 50px;color: #282828;">OUT JULY 5</div></div>
-    </div></div>
-
 
     <div class="mobilimg">
         <div style="width: 100%;">
-        <img src="presavepage.webp" class="imageart">
-           
+            <img src="presavepage.webp" class="imageart">
+        </div>
+        <div style="display: flex; font-family: 'helvetica_vibrations'">
+            <div style="display: flex;width: ;align-items: flex-end;">
+                <div style="margin-bottom: 30px; font-size: 2em;color: #282828;">OUT JULY 5</div>
+            </div>
+        </div>
+        <div style="display: flex; font-family: 'helvetica_vibrations'">
+            <div style="display: flex;width: ;align-items: center;justify-content: flex-end; font-size: 1.4em;text-align: center; line-height: 21px; color: #282828;">
+                <div id="presave-text-mobile">BE THE FIRST<br> GETTING THE <br> PRE SAVE LINK<br>
+                    <div style="font-size: .7em; margin-top: 10px; margin-bottom: 10px;">ENTER YOUR EMAIL</div>
+                    <div class="form-container" id="form-container-mobile">
+                        <form id="email-form-mobile" action="YOUR_FORM_ACTION_URL" method="post">
+                            <input style="font-family: 'helvetica_vibrations'; letter-spacing: .7px;" type="email" name="email" placeholder="" required>
+                            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
+                        </form>
+                    </div>
+                </div>
+                <div id="success-message-mobile" class="hidden">
+                    <p style="font-family: 'helvetica_vibrations';">COOL, YOU ARE NOW IN THE LIST</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div style="display: flex; font-family: 'helvetica_vibrations'" > <div style="display: flex;width: ;align-items: flex-end;"><div style="margin-bottom: 30px; font-size: 2em;color: #282828;">OUT JULY 5</div></div></div>
-    <div style="display: flex; font-family: 'helvetica_vibrations'" >
-        <div style="display: flex;width: ;align-items: center;justify-content: flex-end; font-size: 1.4em;text-align: center; line-height: 21px; color: #282828;"><div>BE THE FIRST<br> GETTING THE <br> PRE SAVE LINK<br><div style="font-size: .7em; margin-top: 10px; margin-bottom: 10px;">ENTER YOUR EMAIL</div> <div class="form-container">
-        <form action="YOUR_FORM_ACTION_URL" method="post" style="">
-            <input style=" font-family: 'helvetica_vibrations'; letter-spacing: .7px;"type="email" name="email" placeholder="" required>
-            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
-        </form>
-    </div></div></div>
-   
-    
-    </div></div>
-    
-    
 
+    <script>
+        document.getElementById('email-form-desktop').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+            // Perform any necessary AJAX request here, if needed
+
+            // Simulate a successful form submission
+            document.getElementById('form-container-desktop').classList.add('hidden');
+            document.getElementById('presave-text-desktop').classList.add('hidden');
+            document.getElementById('success-message-desktop').classList.remove('hidden');
+        });
+
+        document.getElementById('email-form-mobile').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+            // Perform any necessary AJAX request here, if needed
+
+            // Simulate a successful form submission
+            document.getElementById('form-container-mobile').classList.add('hidden');
+            document.getElementById('presave-text-mobile').classList.add('hidden');
+            document.getElementById('success-message-mobile').classList.remove('hidden');
+        });
+    </script>
 </body>
 
 </html>
