@@ -293,11 +293,12 @@
         };
 
         // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
         // Function to save email
         function saveEmail(email) {
+            console.log("Saving email:", email);
             return db.collection("emails").add({
                 email: email,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
@@ -307,26 +308,30 @@
         document.getElementById('email-form-desktop').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
             const email = event.target.email.value;
+            console.log("Desktop form submitted with email:", email);
 
             saveEmail(email).then(() => {
                 document.getElementById('form-container-desktop').classList.add('hidden');
                 document.getElementById('presave-text-desktop').classList.add('hidden');
                 document.getElementById('success-message-desktop').classList.remove('hidden');
+                console.log("Email saved successfully on desktop!");
             }).catch((error) => {
-                console.error("Error saving email: ", error);
+                console.error("Error saving email on desktop:", error);
             });
         });
 
         document.getElementById('email-form-mobile').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
             const email = event.target.email.value;
+            console.log("Mobile form submitted with email:", email);
 
             saveEmail(email).then(() => {
                 document.getElementById('form-container-mobile').classList.add('hidden');
                 document.getElementById('presave-text-mobile').classList.add('hidden');
                 document.getElementById('success-message-mobile').classList.remove('hidden');
+                console.log("Email saved successfully on mobile!");
             }).catch((error) => {
-                console.error("Error saving email: ", error);
+                console.error("Error saving email on mobile:", error);
             });
         });
     </script>
