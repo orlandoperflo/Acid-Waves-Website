@@ -298,34 +298,36 @@
 
         // Function to save email
         function saveEmail(email) {
-            db.collection("emails").add({
+            return db.collection("emails").add({
                 email: email,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(() => {
-                console.log("Email saved successfully!");
-            }).catch((error) => {
-                console.error("Error saving email: ", error);
             });
         }
 
         document.getElementById('email-form-desktop').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
             const email = event.target.email.value;
-            saveEmail(email);
-            // Simulate a successful form submission
-            document.getElementById('form-container-desktop').classList.add('hidden');
-            document.getElementById('presave-text-desktop').classList.add('hidden');
-            document.getElementById('success-message-desktop').classList.remove('hidden');
+
+            saveEmail(email).then(() => {
+                document.getElementById('form-container-desktop').classList.add('hidden');
+                document.getElementById('presave-text-desktop').classList.add('hidden');
+                document.getElementById('success-message-desktop').classList.remove('hidden');
+            }).catch((error) => {
+                console.error("Error saving email: ", error);
+            });
         });
 
         document.getElementById('email-form-mobile').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
             const email = event.target.email.value;
-            saveEmail(email);
-            // Simulate a successful form submission
-            document.getElementById('form-container-mobile').classList.add('hidden');
-            document.getElementById('presave-text-mobile').classList.add('hidden');
-            document.getElementById('success-message-mobile').classList.remove('hidden');
+
+            saveEmail(email).then(() => {
+                document.getElementById('form-container-mobile').classList.add('hidden');
+                document.getElementById('presave-text-mobile').classList.add('hidden');
+                document.getElementById('success-message-mobile').classList.remove('hidden');
+            }).catch((error) => {
+                console.error("Error saving email: ", error);
+            });
         });
     </script>
 </body>
