@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6VZD3PP9N"></script>
     <script>
@@ -280,11 +282,36 @@
     </div>
 
     <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDB6t0eG_E82oTVoTidoA3tkBh1lEBN7ec",
+            authDomain: "acid-waves-emails.firebaseapp.com",
+            projectId: "acid-waves-emails",
+            storageBucket: "acid-waves-emails.appspot.com",
+            messagingSenderId: "294304757403",
+            appId: "1:294304757403:web:c75d6fe47432414996383e"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Function to save email
+        function saveEmail(email) {
+            db.collection("emails").add({
+                email: email,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                console.log("Email saved successfully!");
+            }).catch((error) => {
+                console.error("Error saving email: ", error);
+            });
+        }
+
         document.getElementById('email-form-desktop').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
-
-            // Perform any necessary AJAX request here, if needed
-
+            const email = event.target.email.value;
+            saveEmail(email);
             // Simulate a successful form submission
             document.getElementById('form-container-desktop').classList.add('hidden');
             document.getElementById('presave-text-desktop').classList.add('hidden');
@@ -293,9 +320,8 @@
 
         document.getElementById('email-form-mobile').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
-
-            // Perform any necessary AJAX request here, if needed
-
+            const email = event.target.email.value;
+            saveEmail(email);
             // Simulate a successful form submission
             document.getElementById('form-container-mobile').classList.add('hidden');
             document.getElementById('presave-text-mobile').classList.add('hidden');
