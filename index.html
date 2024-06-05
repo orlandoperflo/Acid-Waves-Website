@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6VZD3PP9N"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-S6VZD3PP9N');
     </script>
 
@@ -298,7 +298,6 @@
 
         // Function to save email
         function saveEmail(email) {
-            console.log("Saving email:", email);
             return db.collection("emails").add({
                 email: email,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
@@ -308,30 +307,26 @@
         document.getElementById('email-form-desktop').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
             const email = event.target.email.value;
-            console.log("Desktop form submitted with email:", email);
 
             saveEmail(email).then(() => {
                 document.getElementById('form-container-desktop').classList.add('hidden');
                 document.getElementById('presave-text-desktop').classList.add('hidden');
                 document.getElementById('success-message-desktop').classList.remove('hidden');
-                console.log("Email saved successfully on desktop!");
             }).catch((error) => {
-                console.error("Error saving email on desktop:", error);
+                console.error("Error saving email: ", error);
             });
         });
 
         document.getElementById('email-form-mobile').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting in the traditional way
             const email = event.target.email.value;
-            console.log("Mobile form submitted with email:", email);
 
             saveEmail(email).then(() => {
                 document.getElementById('form-container-mobile').classList.add('hidden');
                 document.getElementById('presave-text-mobile').classList.add('hidden');
                 document.getElementById('success-message-mobile').classList.remove('hidden');
-                console.log("Email saved successfully on mobile!");
             }).catch((error) => {
-                console.error("Error saving email on mobile:", error);
+                console.error("Error saving email: ", error);
             });
         });
     </script>
