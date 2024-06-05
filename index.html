@@ -72,11 +72,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acid Waves | Vibrations</title>
     <style>
+         .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+           align-items: flex-end;
+        }
+
+        
+
+        .form-container input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            border: none;
+            background-color: #282828;
+            color: white;
+            outline: none;
+        }
+         
+
+         .form-container input[type="submit"] {
+            font-size: 16px;
+            color: #282828;
+            background: none;
+            border: none;
+            margin-left: 0px;
+            cursor: pointer;
+            position: relative;
+            left: 0px;
+        }
+
+
+        
         .marquee {
             width: 100%;
             height: 40px; /* Increased height by 70% from 60px */
             overflow: hidden;
-            background: black;
+            background: #282828;
             color: white;
             box-sizing: border-box;
             display: flex;
@@ -110,11 +150,16 @@
         }
          .deskimg {
             display: flex;
+            justify-content: center;
+            letter-spacing: .7px;
 
         }
 
         .mobilimg {
             display: none;
+                flex-direction: column;
+    align-items: center;
+     letter-spacing: .7px;
         }
 
         @media only screen and (max-width: 600px) {
@@ -138,6 +183,17 @@
             font-weight: normal;
             font-style: normal;
         }
+        
+
+        @font-face {
+            font-family: 'helvetica_vibrations';
+            src: url('HelveticaVibrations.woff2') format('woff2'),
+                url('HelveticaVibrations.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
 
         @font-face {
             font-family: 'helvetica_neue45_light';
@@ -197,11 +253,42 @@
             <span> VIBRATIONS FROM ACID WAVES OUT JULY 5 PRE-SAVE NOW </span>
         </div>
     </div>
-    <div>
-        <img src="PRESAVEMAINPAGE.webp" class="imageart deskimg">
-           <img src="mobilepresave.webp" class="imageart mobilimg">
+
+    <div class="deskimg">
+    <div style="display: flex; font-family: 'helvetica_vibrations'" >
+        <div style="display: flex;width: 25%;align-items: center;justify-content: flex-end; font-size: 33px;text-align: center; line-height: 35px; color: #282828;"><div>BE THE FIRST<br> GETTING THE <br> PRE SAVE LINK<br><div style="font-size: 17px;">ENTER YOUR EMAIL</div> <div class="form-container">
+        <form action="YOUR_FORM_ACTION_URL" method="post" style="">
+            <input style=" font-family: 'helvetica_vibrations'; letter-spacing: .7px;" type="email" name="email" placeholder="" required>
+            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
+        </form>
+    </div></div></div>
+    <div style="width: 50%;">
+        <img src="presavepage.webp" class="imageart ">
+           
     </div>
+     <div style="display: flex;width: 25%;align-items: flex-end;"><div style="margin-bottom: 50px; font-size: 50px;color: #282828;">OUT JULY 5</div></div>
+    </div></div>
+
+
+    <div class="mobilimg">
+        <div style="width: 100%;">
+        <img src="presavepage.webp" class="imageart">
+           
+    </div>
+    <div style="display: flex; font-family: 'helvetica_vibrations'" > <div style="display: flex;width: ;align-items: flex-end;"><div style="margin-bottom: 30px; font-size: 2em;color: #282828;">OUT JULY 5</div></div></div>
+    <div style="display: flex; font-family: 'helvetica_vibrations'" >
+        <div style="display: flex;width: ;align-items: center;justify-content: flex-end; font-size: 1.4em;text-align: center; line-height: 21px; color: #282828;"><div>BE THE FIRST<br> GETTING THE <br> PRE SAVE LINK<br><div style="font-size: .7em; margin-top: 10px; margin-bottom: 10px;">ENTER YOUR EMAIL</div> <div class="form-container">
+        <form action="YOUR_FORM_ACTION_URL" method="post" style="">
+            <input style=" font-family: 'helvetica_vibrations'; letter-spacing: .7px;"type="email" name="email" placeholder="" required>
+            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
+        </form>
+    </div></div></div>
+   
     
+    </div></div>
+    
+    
+
 </body>
 
 </html>
