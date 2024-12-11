@@ -1,340 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-	<script src="https://kit.fontawesome.com/9f069838c2.js" crossorigin="anonymous"></script>
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6VZD3PP9N"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-S6VZD3PP9N');
-    </script>
-
-     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1270804653754193');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1270804653754193&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-    <meta name="facebook-domain-verification" content="sbian6rv2vhf6so3euwqraqs3cv5k6" />
-
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <meta charset="UTF-8">
+    <title>Acid Waves 2025</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acid Waves | Vibrations</title>
-    <style>
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .form-container form {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .form-container input[type="email"] {
-            padding: 10px;
-            font-size: 16px;
-            width: 250px;
-            border: none;
-            background-color: #282828;
-            color: white;
-            outline: none;
-        }
-
-        .form-container input[type="submit"] {
-            font-size: 16px;
-            color: #282828;
-            background: none;
-            border: none;
-            margin-left: 0px;
-            cursor: pointer;
-            position: relative;
-            left: 0px;
-        }
-
-        .marquee {
-            width: 100%;
-            height: 40px;
-            overflow: hidden;
-            background: #282828;
-            color: white;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .marquee-content {
-            display: flex;
-            animation: marquee 40s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .marquee span {
-            display: inline-block;
-            padding: 0 .1rem;
-        }
-
-        .marquee .marquee-content span {
-            white-space: nowrap;
-        }
-
-        .imageart {
-            max-width: 96%;
-            display: block;
-            margin: 20px auto;
-        }
-
-        .deskimg {
-            display: flex;
-            justify-content: center;
-            letter-spacing: .7px;
-        }
-
-        .mobilimg {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            letter-spacing: .7px;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .imageart {
-                max-width: 100%;
-            }
-
-            .deskimg {
-                display: none;
-            }
-
-            .mobilimg {
-                display: flex;
-            }
-        }
-
-        @font-face {
-            font-family: 'helvetica_neueregular';
-            src: url('helveticaneue-boldext-webfont.woff2') format('woff2'),
-                url('helveticaneue-boldext-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'helvetica_vibrations';
-            src: url('HelveticaVibrations.woff2') format('woff2'),
-                url('HelveticaVibrations.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'helvetica_neue45_light';
-            src: url('helveticaneue-light-webfont.woff2') format('woff2'),
-                url('helveticaneue-light-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        p {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:link {
-            color: black;
-        }
-
-        a:visited {
-            color: black;
-        }
-
-        a:hover {
-            color: black;
-        }
-
-        a:active {
-            color: black;
-        }
-
-        body {
-            margin: 0px;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/9f069838c2.js" crossorigin="anonymous"></script>
+   
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <meta charset="UTF-8">
+ 
 </head>
 
 <body>
-    <div class="marquee" style="font-family: 'helvetica_neueregular';">
-        <div class="marquee-content">
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-        </div>
-        <div class="marquee-content">
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
-            <span> VIBRATIONS BY ACID WAVES OUT NOW </span>
+    <header class="header">
+        <div class="logo">acid waves</div>
+        <ul class="menu">
+            <li><a href="#shop">SHOP</a></li>
+            <li><a href="MUSIC">MUSIC</a></li>
+            <li><a href="TICKETS">TICKETS</a></li>
+        </ul>
+    </header>
+
+    <div class="background-container">
+        <img src="https://acidwaves.art/c084ff3e-c789-4d7b-84ac-842e7e5b5a5f.webp" class="backgroundimg" alt="Background Image">
+        <div class="tourpresave">
+            <div>
+                concerts and <br>
+                tour pre-sale list
+                <form class="tourpresave-form" action="#" method="post">
+                    <label for="email">ENTER YOUR EMAIL</label>
+                    <input type="email" id="email" name="email" required placeholder="">
+                    <label for="country">COUNTRY</label>
+                    <input list="country-list" id="country" name="country" required placeholder="">
+                    <datalist id="country-list">
+                        <option value="Mexico"></option>
+                        <option value="United States"></option>
+                        <option value="France"></option>
+                        <option value="Germany"></option>
+                        <option value="United Kingdom"></option>
+                        <option value="Italy"></option>
+                        <option value="Netherlands"></option>
+                        <option value="Spain"></option>
+                        <option value="Colombia"></option>
+                        <option value="Chile"></option>
+                        <option value="Argentina"></option>
+                        <option value="Japan"></option>
+                        <option value="South Korea"></option>
+                        <option value="Australia"></option>
+                    </datalist>
+                    <input type="submit" value="SUBMIT">
+                </form>
+            </div>
         </div>
     </div>
 
-    <div class="deskimg">
-        <div style="display: flex; font-family: 'helvetica_vibrations'">
-            <div style="display: flex;width: 25%;align-items: center;justify-content: flex-end; font-size: 33px;text-align: center; line-height: 35px; color: #282828;">
-                <div id="presave-text-desktop"><BR>LISTEN ON<br><div style="margin-top: 20px;"> 
-                	<a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify fa-2xl" style="color: #282828;"></i></a>
-                	<a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple fa-2xl" style="color: #282828;"></i></a>
-                	<a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube fa-2xl" style="color: #282828;"></i></a></div>
-                    <div style="font-size: 17px; margin-top: 20px; line-height: 20px;">BE THE FIRST <BR> GETTING TOUR TICKETS <BR> ENTER YOUR EMAIL</div>
+    <!-- Vibrations Section with extra content to scroll through -->
+    <section class="vibrations-section">
+       
+        
+        <div class="featuredrelease" >
+            <div class="paddingmusic" >
+                <div id="presave-text">
+                    <span class="listenon" >listen on</span>
+                    <div>
+                        <a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify fa-xl" style=""></i></a>
+                        <a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple fa-xl" ></i></a>
+                        <a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube fa-xl" ></i></a>
+                    </div>
+                    <div class="bethefirst">
+                        BE THE FIRST <br> GETTING NEW RELEASES <br> ENTER YOUR EMAIL
+                    </div>
                     <div class="form-container" id="form-container-desktop">
                         <form id="email-form-desktop">
-                            <input style="font-family: 'helvetica_vibrations'; letter-spacing: .7px;" type="email" name="email" placeholder="" required>
-                            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;">
+                            <input class="inpfield" type="email" name="email" placeholder="" required>
+                            <input class="submit" type="submit" value="SUBMIT" >
                         </form>
                     </div>
                 </div>
-                <div id="success-message-desktop" class="hidden">
-                    <p style="font-family: 'helvetica_vibrations';">COOL, YOU ARE NOW IN THE LIST</p>
-                </div>
             </div>
-            <div style="width: 50%;">
-                <img src="presavepage.webp" class="imageart">
-            </div>
-            <div style="display: flex;width: 25%;align-items: flex-end;">
-                <div style="margin-bottom: 50px; font-size: 50px;color: #282828;">OUT NOW</div>
+            <div class="paddingmusic">
+                <img src="https://acidwaves.art/presavepage.webp" style="">
             </div>
         </div>
-    </div>
-
-    <div class="mobilimg">
-        <div style="width: 100%;">
-            <img src="presavepage.webp" class="imageart">
-        </div>
-        <div style="display: flex; font-family: 'helvetica_vibrations'">
-            <div style="display: flex;width: ;align-items: flex-end;">
-                <div style="margin-bottom: 30px; font-size: 2em;color: #282828;">OUT NOW</div>
+       <div style="">
+        <div class="catalog" style="background-color: transparent!important;  ">
+       
+            
+            <!-- Add more content to allow scrolling -->
+            <div style="color: white;font-size: .7em;">
+                releases
             </div>
-        </div>
-        <div style="display: flex; font-family: 'helvetica_vibrations'">
-            <div style="display: flex;width: ;align-items: center;justify-content: flex-end; font-size: 1.4em;text-align: center; line-height: 21px; color: #282828;">
-                <div id="presave-text-mobile">LISTEN ON<br> <div style="margin-top: 30px; font-size: 30px;"> 
-                	<a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify fa-2xl" style="color: #282828;"></i></a>
-                	<a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple fa-2xl" style="color: #282828;"></i></a>
-                	<a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube fa-2xl" style="color: #282828;"></i></a></div>
-                    <div style="font-size: .7em; margin-top: 30px; margin-bottom: 10px;">BE THE FIRST <BR> GETTING TOUR TICKETS <BR> ENTER YOUR EMAIL</div>
-                    <div class="form-container" id="form-container-mobile">
-                        <form id="email-form-mobile">
-                            <input style="font-family: 'helvetica_vibrations'; letter-spacing: .7px;" type="email" name="email" placeholder="" required>
-                            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations'; margin-top: 10px; font-size: 17px;margin-bottom: 40px;">
-                        </form>
+            <div class="songrow" style="">
+                <div class="song">
+                    <img src="https://acidwaves.art/pixelcut-export.webp" style="max-width: 295px;"alt="Release 1">
+                    <div class="stream">
+                        <a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify " ></i></a>
+                        <a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple " ></i></a>
+                        <a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube " ></i></a>
                     </div>
                 </div>
-                <div id="success-message-mobile" class="hidden">
-                    <p style="font-family: 'helvetica_vibrations';">COOL, YOU ARE NOW IN THE LIST</p>
+                <br>
+                <div class="song">
+                    <img src="https://acidwaves.art/pixelcut-export1.webp" style="max-width: 295px;" alt="Release 2">
+                    <div class="stream">
+                        <a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify " ></i></a>
+                        <a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple " ></i></a>
+                        <a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube " ></i></a>
+                    </div>
                 </div>
             </div>
+            <div class="songrow" style="">
+                <div class="song">
+                    <img src="https://acidwaves.art/pixelcut-export2.webp" style="max-width: 295px;" alt="Release 3">
+                    <div class="stream">
+                        <a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify "></i></a>
+                        <a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple " ></i></a>
+                        <a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube "></i></a>
+                    </div>
+                </div>
+                <br>
+                <div class="song">
+                    <img src="https://acidwaves.art/pixelcut-export3.webp"style="max-width: 295px;" alt="Release 4">
+                    <div class="stream">
+                        <a href="https://open.spotify.com/intl-es/album/3mioni4j0uRMyiN1J2Cbmx?si=oLoeviwTQniQkq30PSwntQ" target="_blank"><i class="fa-brands fa-spotify " ></i></a>
+                        <a href="https://music.apple.com/us/album/vibrations-ep/1751397114" target="_blank"><i class="fa-brands fa-apple " ></i></a>
+                        <a href="https://www.youtube.com/@AcidWaves/videos" target="_blank"><i class="fa-brands fa-youtube " ></i></a>
+                    </div>
+                </div>
+            </div>
+         
+        </div></div>
+        <div class="videos" >
+           <div  class="video"  >
+                video
+                         </div>
+                        <div class="iframes">
+                               <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/bvVEyg4rZyc?si=IomMSrhXaPDkAIOi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                 <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/mPPemJ_YhRU?si=do3cc8hyfoHBIfqV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+                        <div class="iframes">
+                                  <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/ZwIkpDng-v0?si=IoTpyVOfZ3SiBhRV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                 <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/ZwIkpDng-v0?si=IoTpyVOfZ3SiBhRV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <div class="iframes" >
+                                  <iframe  class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/SIyLSD7ywIM?si=iHc5USWIbF3G9Vjg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                   <iframe class="paddingmusiciframe"  width="560" height="315" src="https://www.youtube.com/embed/_mcxgeB6ho4?si=lIYa9ymxDQ72hXtG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+           <div class="iframes" >
+                    <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/DJTGFKMRabY?si=CYlOa71aLagQNGiq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                      <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/-MsgfBNkgX0?si=MUf8AOK1WYe1Oxq5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+           <div class="iframes" >
+                          <iframe class="paddingmusiciframe" width="560" height="315" src="https://www.youtube.com/embed/InhPJG2Rnl4?si=n8Ditvy0j6w_64yL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                          <iframe class="paddingmusiciframe"  width="560" height="315" src="https://www.youtube.com/embed/LOIX9fXfvNw?si=o1sDqo0dY7sPSAXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         </div>
+        <div class="eplive" style="">
+            <div class="video-background">
+                     <video autoplay muted loop>
+                       <source src="https://acidwaves.art/BG.webm" type="video/webm">
+           
+                     </video>
+                       <div class="content" >
+                             <div class="allreleases">
+                                       <ul style="">
+                                       <li >
+                                                 ALL
+                                        </li>
+                                         <li  >
+                                                EP
+                                             </li>
+                                          <li >
+                                               LIVE
+                                               </li>
+                                             </ul>
+                             </div>
+
+                             <div class="releasegroup" style="">
+            
+                  <div class="eachrelease" >
+                            <img src="https://acidwaves.art/presavepage.webp" style="">
+                            <div>
+                                <div class="releasedate" style="">
+                                    RELEASE DATE JULY 5, 2024
+                                </div>
+                                <div class="releasetitle" style="">
+                                    vibrations
+                                </div>
+                            </div>
+                        </div>
+                  <div class="eachrelease" >
+                            <img src="https://acidwaves.art/spotify_71468362965.webp" >
+                            <div>
+                                <div class="releasedate" >
+                                    RELEASE DATE JULY 22, 2016
+                                </div>
+                                <div class="releasetitle">
+                                    acapulco love
+                                </div>
+                            </div>
+                        </div>
+
+                              </div>
+  
+                      </div>
+
+                      
+
+
+             </div>
+              
+        </div>
+    </section>
+
+    <!-- Inferno Section -->
+    <section class="inferno-section" >
+         <div  style="position: absolute;
+    z-index: -1;">
+            <div class="shopwrap"  style="">
+               <div  class="apparel" style="">
+               <div>APPAREL</div>
+               <div>ACCESORIES</div>
+                <div>CD & VINYL</div>
+           </div>
+            </div>
+              <div class="waitlist" style="">
+                <div class="joinwait" style="">enter your email to get tour dates and tickets before anyone else  <div class="form-container" id="form-container-desktop">
+                        <form id="email-form-desktop2">
+                            <input style="font-family: 'helvetica_vibrations'; letter-spacing: .7px;    background-color: black; margin-left: 20px;" type="email" name="email" placeholder="" required>
+                            <input type="submit" value="SUBMIT" style="font-family: 'helvetica_vibrations';
+    margin-top: 10px;
+    font-size: 17px;
+    background-color: transparent;
+    border-style: none;
+    color:  black;">
+                        </form>
+                    </div></div>
+                <div class="tourcities" style="">MEXICO US UK SPAIN FRANCE ITALY GERMANY NETHERLANDS ARGENTINA CHILE COLOMBIA SOUTH KOREA AUSTRALIA JAPAN </div>
+
+            </div>
+        </div>
+        <div style="color: black;">
+            <div>
+                SHOP
+            </div>
+            <div>
+               TOUR DATES 
+            </div>
+        </div>
+
+       
+    </section>
+    <section class="contact-section">
+    <div class="contact-content">
+        <p style="margin: 0px; padding: 0px; line-height: 15px; text-align: center;">aw@acidwaves.art <br> <span style="font-size: .3em; margin: 0px; padding: 0px; padding-bottom: ;">unapologetic music group</span> <br style="padding-bottom: 2%;"><br>
+         <a style="font-size: 1.5em; margin-top: 12%;">
+             IG 
+         </a>
+        
+        </p>
+        
     </div>
+</section>
 
-    <script>
-        // Your Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDB6t0eG_E82oTVoTidoA3tkBh1lEBN7ec",
-            authDomain: "acid-waves-emails.firebaseapp.com",
-            projectId: "acid-waves-emails",
-            storageBucket: "acid-waves-emails.appspot.com",
-            messagingSenderId: "294304757403",
-            appId: "1:294304757403:web:c75d6fe47432414996383e"
-        };
+   
+    <script type="text/javascript" src="include.js"></script>
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        // Function to save email
-        function saveEmail(email) {
-            return db.collection("emails").add({
-                email: email,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            });
-        }
-
-        document.getElementById('email-form-desktop').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting in the traditional way
-            const email = event.target.email.value;
-
-            saveEmail(email).then(() => {
-                document.getElementById('form-container-desktop').classList.add('hidden');
-                document.getElementById('presave-text-desktop').classList.add('hidden');
-                document.getElementById('success-message-desktop').classList.remove('hidden');
-            }).catch((error) => {
-                console.error("Error saving email: ", error);
-            });
-        });
-
-        document.getElementById('email-form-mobile').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting in the traditional way
-            const email = event.target.email.value;
-
-            saveEmail(email).then(() => {
-                document.getElementById('form-container-mobile').classList.add('hidden');
-                document.getElementById('presave-text-mobile').classList.add('hidden');
-                document.getElementById('success-message-mobile').classList.remove('hidden');
-            }).catch((error) => {
-                console.error("Error saving email: ", error);
-            });
-        });
-    </script>
 </body>
-
 </html>
