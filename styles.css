@@ -1,0 +1,515 @@
+ @font-face {
+            font-family: 'helvetica_vibrations';
+            src: url('https://acidwaves.art/HelveticaVibrations.woff2') format('woff2'),
+                 url('https://acidwaves.art/HelveticaVibrations.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevents actual scrolling of the entire page */
+        }
+
+        body {
+            width: 100%;
+            font-family: helvetica_vibrations;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 2%;
+            padding-right: 2%;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background-color: white;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden; /* Ensures no scrolling within the initial section */
+        }
+
+        .backgroundimg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tourpresave {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translateY(-50%);
+            font-family: helvetica_vibrations;
+            color: black;
+            font-size: 2em;
+            background-color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+
+        /* Styles for form elements */
+        .tourpresave-form {
+            margin-top: 20px;
+            font-size: 0.3em;
+        }
+
+        .tourpresave-form label,
+        .tourpresave-form input {
+            display: block;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .tourpresave-form input {
+            background: black;
+            border: 1px solid #fff;
+            padding: 5px;
+            color: black;
+        }
+
+        .tourpresave-form input[type="submit"] {
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tourpresave-form input[type="submit"]:hover {
+            background: #ccc;
+        }
+
+        /* Vibrations Section (slides in from the right) */
+        .vibrations-section {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+           
+            color: white;
+            font-family: helvetica_vibrations;
+            font-size: 3em;
+            transform: translateX(100%);
+            transition: transform 1s ease-in-out;
+            z-index: 1;
+            overflow: auto; /* Allows scrolling within vibrations section */
+             /* Push content below header */
+        }
+
+        .vibrations-section.active {
+            transform: translateX(0);
+        }
+
+        #presave-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center !important;
+        }
+
+        /* Inferno Section (slides in from the left) */
+        .inferno-section {
+            position: absolute;
+            top: 0;
+            left: 0; /* Changed from right: 0 to left: 0 */
+            width: 100%;
+            height: 100vh;
+            background: white;
+            color: white; /* Changed from black to white for better visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: helvetica_vibrations;
+            font-size: 3em;
+            transform: translateX(-100%);
+            transition: transform 1s ease-in-out;
+            z-index: 2;
+            overflow: hidden; /* Prevents scrolling within inferno section */
+        }
+
+        .inferno-section.active {
+            transform: translateX(0);
+        }
+         
+
+         .song {
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%; 
+         }
+
+         .stream {
+            padding-top: 5%;
+            text-align: center;
+         }
+       
+        .catalog {
+            position: relative;
+            margin-top: 3%;
+          
+            z-index: 2; /* Keeps it above other layers if necessary */
+            padding: 20px; /* Adjust as needed for content spacing */
+            color: white; /* Text color for visibility */
+          
+        }
+
+        /* Removed .parallax-background styles */
+
+        /* Optional: Adjust content within catalog for better visibility */
+        .catalog img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+
+        }
+
+        .catalog a {
+            margin: 0 0px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .catalog p {
+            font-size: 1em;
+            line-height: 1.5em;
+            color: white;
+            margin: 20px 0;
+        }
+        .contact-section {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: helvetica_vibrations;
+        font-size: 2em;
+        transform: translateY(100%);
+        transition: transform 1s ease-in-out;
+        z-index: 3;
+    }
+
+    .contact-section.active {
+        transform: translateY(0);
+    }
+
+
+    .paddingmusic {
+      padding: 1%;
+
+    }
+    
+     /* Set styles for the video container */
+        .video-background {
+            position: relative; /* Allows positioning of content over the video */
+            width: 100%; /* Full width */
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Hide video overflow */
+        }
+
+        /* Fullscreen video */
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: ; /* Place behind any content */
+        }
+
+        /* Content over the video */
+        .content {
+            position: relative; /* Ensures it stays on top of the video */
+            color: white; /* Text color */
+            text-align: center; /* Center align text */
+             /* Adjust as needed */
+            z-index: 1; /* Keep content above the video */
+            font-family: helvetica_vibrations; display: flex; font-size: 1.7em;
+    flex-direction: column;
+      
+        }
+      .featuredrelease {
+
+        display: flex; justify-content: center; align-items: center; background-color: black; height: 100%;
+      }
+
+        .listenon {
+
+             font-size: .7em; padding-bottom: 10%;
+        }
+
+        .fa-brands {
+
+            color: white;
+        }
+         
+
+         .bethefirst {
+
+              font-size:.3em; margin-top: 20px; line-height: 20px;text-align: center;
+         }
+
+         .inpfield {
+            font-family: 'helvetica_vibrations'; letter-spacing: .7px;
+
+         }
+        
+        .submit {
+            font-family: 'helvetica_vibrations';
+    margin-top: 10px;
+    font-size: 17px;
+    background-color: transparent;
+    border-style: none;
+    color: white;
+        }
+        
+
+        .videos {
+               display: flex;
+  
+                   background-color: transparent;
+                  flex-direction: column;
+                  align-items: center;
+                   padding-top: 3%;
+                   padding-bottom: 3%;
+        }  
+
+
+        .video {
+            color: white; font-size: .7em; padding-bottom: 3%; text-align: right;
+                     width: 100%;
+                      padding-right: 2%;
+        }
+
+
+        .eplive {
+            background-color: white; width: 100%; height: 100vh;
+        }
+
+
+        .allreleases ul {
+            list-style:  none;
+                           display: flex; padding: 3%; padding-top: 0px; padding-bottom: 0px; margin: 0%;
+
+        }
+
+        .allreleases li {
+            padding: 1%;
+        }
+
+
+        .releasegroup {
+
+            display: flex;
+                justify-content: flex-start;
+
+        }
+
+        .eachrelease {
+            padding: 4%;padding-top: 0%;display: flex; flex-direction: column; text-align: initial;
+        }
+
+        .eachrelease img {
+              max-width: 350px;
+        }
+
+
+         .releasedate {
+            font-size: .2em;
+
+         }
+
+
+         .releasetitle {
+              font-size: 1em;
+         }
+           
+
+
+           .paddingmusic img {
+            max-width: 500px;
+           }
+
+
+           .songrow { 
+            display: flex; justify-content: center;
+           }
+
+
+            .paddingmusiciframe {
+                   padding: 1%;
+            }
+
+            .tourcities {
+                padding-top: ; font-size: 1em;
+
+            }
+
+
+            .apparel {
+                display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+            }
+
+
+            .waitlist {
+                height: 50vh; width: 100%; background-color: white; color: black;max-width: 1400px;
+            }
+                 
+                  .joinwait {
+
+                    padding-top: 7%; font-size: .5em; display: flex;align-items: flex-end;
+                  }
+
+
+                  .shopwrap {
+                   height: 50vh; width: 100%; background-color: white; color: black; display: flex;align-items: center;
+    justify-content: space-around;
+                  }
+
+
+
+@media screen and (max-width: 700px) {
+
+    .tourpresave {
+        position: inherit;
+        transform: translateY(0);
+        top: 0;
+        height: 35%;
+        display: flex;
+    align-items: center;
+    }
+
+    .tourpresave-form {
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .backgroundimg {
+   
+    height: 100%;
+   margin-left: -90%;
+   
+    width: auto;
+}
+
+        .background-container {
+   
+    display: flex;
+    flex-direction: column;
+}
+        .featuredrelease {
+    
+    flex-direction: column-reverse;
+}
+
+           .paddingmusic img {
+            max-width: 390px;
+           }
+
+           .paddingmusiciframe {
+            
+            width: 390px;
+    height: 219px;
+           
+           }
+             
+             .iframes {
+                display: flex;
+    flex-direction: column;
+    align-items: center;
+
+             }
+
+           .songrow { 
+            flex-direction: column;
+           }
+
+
+           .content {
+    
+    font-size: 1.2em;
+    
+}                
+             .eachrelease img {
+              max-width: 300px;
+        }
+
+        .releasegroup {
+ 
+    flex-direction: column;
+}
+
+
+           .releasetitle {
+    font-size: .8em;
+}
+               .tourcities {
+                padding-top: ; font-size: .6em;
+            }
+
+
+            .apparel {
+              flex-direction: column;
+            }
+
+             .waitlist {
+               max-width: 390px;
+            }
+
+           .joinwait {
+
+                    padding-top: 17%;
+                  }
+            #email-form-desktop2 {
+                display: flex;
+    flex-direction: column;
+            }
+}
