@@ -149,7 +149,7 @@
             top: 0;
             left: 0; /* Changed from right: 0 to left: 0 */
             width: 100%;
-            height: 100vh;
+            height: 100vh!important;
             background: white;
             color: white; /* Changed from black to white for better visibility */
             display: flex;
@@ -417,25 +417,6 @@
 
 @media screen and (max-width: 700px) {
 
-
-    .catalog  {
-            background-image: url(https://acidwaves.art/releasesbg.webp);
-            margin-top: 0;
-    }
-    .videos {
-            background-image: url(https://acidwaves.art/releasesbg.webp);
-            margin-top: 0;
-            background-size: contain;
-    }
-
-    .video-background video {
-   
-    display: none;
-}
-
-
-
-
     .tourpresave {
         position: inherit;
         transform: translateY(0);
@@ -453,7 +434,7 @@
 
     .backgroundimg {
    
-    
+    height: 100%;
    margin-left: -90%;
    
     width: auto;
@@ -495,8 +476,43 @@
            .content {
     
     font-size: 1.2em;
-        background-color: black;
-}                
+    
+   
+  
+
+}          
+
+
+.catalog {
+
+  
+    margin-top: 0;
+ 
+    background-image: url(https://acidwaves.art/releasesbg.webp);
+    background-position-x: 70%;
+}      
+           
+.videos {
+      margin-top: 0;
+ 
+    background-image: url(https://acidwaves.art/releasesbg.webp);
+    background-position-x: -40%;
+}
+
+.video-background video {
+   
+    display: none;
+}
+
+.content {
+    background-image: url(https://acidwaves.art/1210.webp);
+    background-position-x: 0%;
+}
+
+
+
+
+
              .eachrelease img {
               max-width: 300px;
         }
@@ -534,58 +550,45 @@
 }
 
 
-@media screen and (max-width: 700px) {
-    .vibrations-section, .inferno-section, .contact-section {
-        position: static;
-        width: 100%;
-        height: 100%;
-        transform: none; /* Reset any transformations */
+
+@media screen and (max-width: 800px) {
+    .vibrations-section {
+        transform: none !important; /* Reset any transforms */
+        transition: none !important; /* Disable transitions */
+        position: relative !important; /* Allow normal block positioning */
+        height: auto !important; /* Allow sections to adjust height automatically */
+        overflow: visible !important; /* Disable inner scrolling */
+    }
+ .contact-section {
+        transform: none !important; /* Reset any transforms */
+        transition: none !important; /* Disable transitions */
+        position: relative !important; /* Allow normal block positioning */
+        height: 100vh !important; /* Allow sections to adjust height automatically */
+        overflow: visible !important; /* Disable inner scrolling */
     }
 
-    body {
-        overflow-y: auto; /* Enable scrolling */
+
+
+      
+    .inferno-section {
+         transform: none !important; /* Reset any transforms */
+        transition: none !important; /* Disable transitions */
+        position: relative !important; /* Allow normal block positioning */
+        height: 100vh!important; /* Allow sections to adjust height automatically */
+        overflow: visible !important; /* Disable inner scrolling */
+
     }
-}
 
-
-@media screen and (max-width: 700px) {
-    .backgroundimg {
-        background-attachment: scroll; /* Ensure no parallax */
+    .vibrations-section {
+        z-index: auto; /* Reset stacking context */
     }
-}
 
-
-@media screen and (max-width: 700px) {
-    .inferno-section {
-        transform: none; /* Disable transform for natural layout */
-        transition: none; /* Remove animation effects */
-        position: relative; /* Restore natural document flow */
-        background: white; /* Ensure visibility */
-        color: black; /* Correct text color for visibility */
+    html, body {
+        overflow: auto !important; /* Enable normal scrolling for the entire page */
+        
     }
-}
 
-
-@media screen and (max-width: 700px) {
-    .inferno-section .apparel,
-    .inferno-section .waitlist {
-        display: flex; /* Ensure proper layout */
-        flex-direction: column; /* Adjust for mobile stacking */
-        align-items: center; /* Center content on mobile */
-    }
-}
-
-
-@media screen and (max-width: 700px) {
     .background-container {
-        width: 100%; /* Ensure it doesn't overflow */
-        overflow: hidden; /* Prevent any child overflow */
-        display: flex; /* Maintain proper layout */
-        flex-direction: column; /* Stack content */
-    }
-
-    .backgroundimg {
-       
+        position: static !important; /* Ensure the background is in normal flow */
     }
 }
-
