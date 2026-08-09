@@ -41,5 +41,8 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           pages-base-url: https://acidwaves.art
-          wait-for-pages-deployment: true
+          # GitHub Pages for this repository is published from a branch, so there is
+          # no matching Pages build run for the preview action to poll. Leaving this
+          # disabled prevents the workflow from hanging after the preview files deploy.
+          wait-for-pages-deployment: false
           qr-code: true
