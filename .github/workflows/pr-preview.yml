@@ -31,6 +31,7 @@ jobs:
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='public/' \
+            --exclude='pr-preview/' \
             ./ public/
           touch public/.nojekyll
 
@@ -38,7 +39,10 @@ jobs:
         uses: rossjrw/pr-preview-action@v1.8.1
         with:
           source-dir: public
-          preview-branch: gh-pages
+          # This site is currently served by GitHub Pages from the repository branch,
+          # so previews must be committed to the PR base branch to be reachable at
+          # https://acidwaves.art/pr-preview/pr-<number>/ before merge.
+          preview-branch: ${{ github.event.pull_request.base.ref }}
           umbrella-dir: pr-preview
           pages-base-url: https://acidwaves.art
           # GitHub Pages for this repository is published from a branch, so there is
