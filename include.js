@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const backgroundImage = document.querySelector('.backgroundimg');
     const tourPresave = document.querySelector('.tourpresave');
     const shopLink = document.querySelector('.menu a[href="#shop"]'); // Select SHOP link
-    const musicLink = document.querySelector('.menu a[href="MUSIC"]'); // Select MUSIC link
-    const ticketsLink = document.querySelector('.menu a[href="TICKETS"]'); // Select TICKETS link
+    const musicLink = document.querySelector('.menu a[href="#music"]'); // Select MUSIC link
+    const ticketsLink = document.querySelector('.menu a[href="#tickets"]'); // Select TICKETS link
 
     let currentStep = 0; // 0 = initial, 1 = vibrations visible, 2 = inferno visible, 3 = contact visible
     let fullyViewedVibrations = false; // True when user has scrolled to bottom of vibrations
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (section.classList.contains('active')) {
             // Reverse the change as soon as the button is clicked
             if (section === vibrationsSection) {
-                backgroundImage.src = 'https://acidwaves.art/c084ff3e-c789-4d7b-84ac-842e7e5b5a5f.webp';
+                backgroundImage.src = 'c084ff3e-c789-4d7b-84ac-842e7e5b5a5f.webp';
                 tourPresave.style.display = 'flex';
             }
             section.classList.remove('active');
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (section === vibrationsSection) {
                 section.addEventListener('transitionend', () => {
-                    backgroundImage.src = 'https://acidwaves.art/releasesbg.webp';
+                    backgroundImage.src = 'releasesbg.webp';
                     tourPresave.style.display = 'none';
                 }, { once: true });
             }
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransitioning = true;
             vibrationsSection.classList.add('active');
             vibrationsSection.addEventListener('transitionend', () => {
-                backgroundImage.src = 'https://acidwaves.art/releasesbg.webp';
+                backgroundImage.src = 'releasesbg.webp';
                 tourPresave.style.display = 'none';
             }, { once: true });
             currentStep = 1;
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { isTransitioning = false; }, 1000);
         } else if (currentStep === 1) {
             if (vibrationsSection.scrollTop === 0) {
-                backgroundImage.src = 'https://acidwaves.art/c084ff3e-c789-4d7b-84ac-842e7e5b5a5f.webp';
+                backgroundImage.src = 'c084ff3e-c789-4d7b-84ac-842e7e5b5a5f.webp';
                 tourPresave.style.display = 'flex';
                 isTransitioning = true;
                 vibrationsSection.classList.remove('active');

@@ -1,0 +1,170 @@
+name: GitHub Pages Preview
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  push:
+    branches-ignore:
+      - gh-pages
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  deployments: write
+  pull-requests: write
+
+concurrency:
+  group: pages-preview-${{ github.event.pull_request.number || github.ref_name || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request
+        if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Check out branch
+        if: github.event_name != 'pull_request_target'
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Resolve preview target
+        id: preview
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            let prNumber = '';
+            if (context.eventName === 'pull_request_target') {
+              prNumber = String(context.payload.pull_request.number);
+            } else if (context.eventName === 'push') {
+              const branch = context.ref.replace('refs/heads/', '');
+              const { data: pulls } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                head: `${context.repo.owner}:${branch}`,
+                per_page: 1,
+              });
+              prNumber = pulls[0] ? String(pulls[0].number) : '';
+            }
+
+            const branchSlug = context.ref
+              .replace('refs/heads/', '')
+              .toLowerCase()
+              .replace(/[^a-z0-9-]+/g, '-')
+              .replace(/^-+|-+$/g, '') || 'manual';
+            const destination = prNumber ? `pr-${prNumber}` : `preview-${branchSlug}`;
+
+            const cnamePath = 'CNAME';
+            const customDomain = fs.existsSync(cnamePath)
+              ? fs.readFileSync(cnamePath, 'utf8').trim().replace(/^https?:\/\//, '').replace(/\/$/, '')
+              : '';
+            const previewUrl = customDomain
+              ? `https://${customDomain}/${destination}/`
+              : `https://${context.repo.owner}.github.io/${context.repo.repo}/${destination}/`;
+
+            core.setOutput('pr_number', prNumber);
+            core.setOutput('destination', destination);
+            core.setOutput('preview_url', previewUrl);
+
+      - name: Prepare static preview
+        run: |
+          mkdir -p public
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='CNAME' \
+            ./ public/
+
+      - name: Deploy preview to gh-pages subdirectory
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          destination_dir: ${{ steps.preview.outputs.destination }}
+          keep_files: true
+          enable_jekyll: false
+
+
+      - name: Register preview deployment
+        uses: actions/github-script@v7
+        env:
+          DESTINATION: ${{ steps.preview.outputs.destination }}
+          PREVIEW_URL: ${{ steps.preview.outputs.preview_url }}
+          PR_NUMBER: ${{ steps.preview.outputs.pr_number }}
+        with:
+          script: |
+            const destination = process.env.DESTINATION;
+            const previewUrl = process.env.PREVIEW_URL;
+            const prNumber = process.env.PR_NUMBER;
+            const ref = context.eventName === 'pull_request_target'
+              ? context.payload.pull_request.head.sha
+              : context.sha;
+            const environment = prNumber ? `preview/pr-${prNumber}` : `preview/${destination}`;
+            const logUrl = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+
+            const { data: deployment } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref,
+              auto_merge: false,
+              required_contexts: [],
+              environment,
+              transient_environment: true,
+              description: `GitHub Pages preview for ${destination}`,
+            });
+
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.id,
+              state: 'success',
+              environment_url: previewUrl,
+              log_url: logUrl,
+              auto_inactive: false,
+              description: 'Preview published to GitHub Pages',
+            });
+
+      - name: Comment preview URL on pull request
+        if: steps.preview.outputs.pr_number != ''
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ steps.preview.outputs.pr_number }}
+          PREVIEW_URL: ${{ steps.preview.outputs.preview_url }}
+        with:
+          script: |
+            const prNumber = Number(process.env.PR_NUMBER);
+            const previewUrl = process.env.PREVIEW_URL;
+            const marker = '<!-- acid-waves-pages-preview -->';
+            const body = `${marker}\n## GitHub Pages preview\n\nPreview this PR at: ${previewUrl}\n\n_This URL is updated automatically whenever the PR branch changes. If it 404s immediately after a push, wait for the Pages deployment to finish and refresh._`;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) => comment.user.type === 'Bot' && comment.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
