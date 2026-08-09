@@ -1,0 +1,52 @@
+name: Deploy PR preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare static site
+        if: github.event.action != 'closed'
+        run: |
+          mkdir -p public
+          rsync -av --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='public/' \
+            --exclude='pr-preview/' \
+            ./ public/
+          touch public/.nojekyll
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1.8.1
+        with:
+          source-dir: public
+          # This site is currently served by GitHub Pages from the repository branch,
+          # so previews must be committed to the PR base branch to be reachable at
+          # https://acidwaves.art/pr-preview/pr-<number>/ before merge.
+          preview-branch: ${{ github.event.pull_request.base.ref }}
+          umbrella-dir: pr-preview
+          pages-base-url: https://acidwaves.art
+          # GitHub Pages for this repository is published from a branch, so there is
+          # no matching Pages build run for the preview action to poll. Leaving this
+          # disabled prevents the workflow from hanging after the preview files deploy.
+          wait-for-pages-deployment: false
+          qr-code: true
